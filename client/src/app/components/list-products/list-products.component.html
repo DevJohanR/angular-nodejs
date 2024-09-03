@@ -1,0 +1,36 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="container">
+    <div class="title">
+        <h4>Listado de Productos</h4>
+        <!-- Botón de Materialize -->
+        <a routerLink="/add" class="waves-effect waves-light btn black">Agregar Producto</a>
+    </div>
+
+    <!-- Tabla de Materialize -->
+    <table *ngIf="listProducts.length > 0" class="highlight centered responsive-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listProducts">
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.price | currency }}</td>
+            <td>{{ item.stock }}</td>
+            <td>
+                <!-- Botones de Materialize -->
+                <a routerLink="/edit/{{ item.id }}" class="waves-effect waves-light btn-small black">Edit</a>
+                <a (click)="deleteProduct(item.id!)" class="waves-effect waves-light btn-small grey darken-2 ms-2">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+
+    <h5 *ngIf="listProducts.length == 0">No hay productos para mostrar</h5>
+</div>
