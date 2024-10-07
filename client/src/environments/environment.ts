@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  endpoint: 'https://angular-nodejs-x3zl.onrender.com'
+  production: false,
+  endpoint: 'http://localhost:3001/'
 };
 
 /*
